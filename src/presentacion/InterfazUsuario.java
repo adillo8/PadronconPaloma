@@ -2,39 +2,39 @@ package presentacion;
 import dominio.*;
 import java.util.ArrayList;
 
-
-
 public class InterfazUsuario
 
 {
+                public static OficinaPadron padron = new OficinaPadron();
+                
+
+		public static boolean ejecutar(
+
+		                   String[] instruccion){ 
+
+		                   if (instruccion[0].equalsIgnoreCase("mostrar") && instruccion.length == 1){
+
+ 			                     mostrarOficinaPadron(padron);
+
+		                   }else if (instruccion[0].equalsIgnoreCase("anadir") && instruccion.length == 4){
+
+			                     padron.annadir(new Habitante(instruccion[1], instruccion[2], instruccion[3]));
+
+			                     System.out.println("Habitante añadido correctamente");
+
+		                   }else if (instruccion[0].equalsIgnoreCase("salir") && instruccion.length == 1){
+					   padron.volcar();  
+					   return false;
+			           }else{
 
 
-
-
-
-	public static void ejecutar(
-
-		String[] instruccion){ 
-
-		OficinaPadron padron = new OficinaPadron();
-
-		if (instruccion[0].equalsIgnoreCase("mostrar") && instruccion.length == 1){
-
- 			mostrarOficinaPadron(padron);
-
-		}else if (instruccion[0].equalsIgnoreCase("anadir") && instruccion.length == 4){
-
-			padron.annadir(new Habitante(instruccion[1], instruccion[2], instruccion[3]));
-
-			System.out.println("Habitante añadido correctamente");
-
-		}else{
-
-			System.out.println("Error en la instrucción");
+			            System.out.println("Error en la instrucción");
 
 		}
+                return true;				   
 
-	}
+
+}
 
 
 
